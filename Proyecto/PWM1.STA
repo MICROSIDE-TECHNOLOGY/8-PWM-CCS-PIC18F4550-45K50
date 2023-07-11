@@ -1,0 +1,47 @@
+
+ROM used:   266/32768 (1%)
+            270/32768 (1%) including unused fragments
+
+            0.3 Average locations per line
+            20.5 Average locations per statement
+
+RAM used:   6/2048 (0%) at main() level
+            7/2048 (0%) worst case
+
+Stack used: 1 worst case (1 in main + 0 for interrupts)
+Stack size: 31
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   45    13 100  PWM1.c
+  944     0   0  ..\..\..\..\..\Program Files (x86)\PICC\devices\18F45K50.h
+----- -----
+  989    13 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     40   8    1             @delay_ms1
+0     36   7    0    76  2.0  SisInit
+0    186  35    0   255  4.5  MAIN
+ Inline         0   262  1.8  @cinit1
+
+Program metrics:
+    Functions               3
+    Statements              13
+    Comments                189
+    Volume (V)              779
+    Difficulty (D)          8.4
+    Effort to implement (E) 6526
+    Time to implement (T)   6 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   2
+    Maintainability (MI)    105
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-01FFE     0  8192  
+02000-02006     4  4  
+02008-07FFE   262  24306  
+
+
+

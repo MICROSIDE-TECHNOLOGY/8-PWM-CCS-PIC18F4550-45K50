@@ -1,0 +1,35 @@
+/* Autor: MICROSIDE TECHNOLOGY SA. de CV.
+Fecha: octubre 2018
+Descripción: Uso del módulo PWM (Modulador de Ancho de Pulso) para variar el ciclo de trabajo (duty cycle)
+el cual se muestra a través de un LED conectado al pin C2, el valor se cambia para apreciar la intensidad luminosa. */
+
+#include <18F45K50.h>                    //Incluye la librería para el PIC ( para X-TRAINERp8DIP28: #include <18F25K50.h> )
+#use delay(internal=48MHz)              //Configura frecuencia del oscilador interno
+#build(reset=0x02000,interrupt=0x02008)//Asigna los vectores de reset e interrupción para la versión con bootloader
+#org 0x0000,0x1FFF {}                 //Reserva espacio en memoria para el bootloader
+unsigned int16 Duty=0;         //variable para ajustar el valor del PWM1 en CCP1 
+//int1 SUBE=1;                        //variable para control de ascenso y descenso del valor del PWM 
+ 
+void main()
+{
+   setup_timer_2(T2_DIV_BY_16,254,1);                       //Configura Timer2, periodo ajustado a 342uS
+   setup_ccp1(CCP_PWM|CCP_SHUTDOWN_AC_L|CCP_SHUTDOWN_BD_L);//Configura el módulo CCP para uso del PWM
+ 
+    while(TRUE)
+    {   
+      
+       for(Duty = 0; Duty < 255; Duty++)
+      {
+         set_pwm1_duty (Duty); //Salida Pin_C2
+         delay_ms (5); //cada 40 mili segundo
+      }
+
+      
+      for (Duty = 0; Duty < 255; Duty++)
+      {
+         set_pwm1_duty (Duty); //Salida Pin_C2
+         delay_ms (5); //cada 40 mili segundo
+      }
+    }
+} 
+
