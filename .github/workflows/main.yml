@@ -1,0 +1,31 @@
+on: [push]
+
+jobs:
+  gist-sync:
+    name: gist-sync
+    runs-on: ubuntu-latest
+    steps:
+    #PIC18F4550
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: vhperaltaj/gist-sync-action@v1.0.0
+        id: PIC18F4550
+        with:
+          auth: ${{ secrets.GIST_TOKEN }}
+          gist_url: https://gist.github.com/microside-mx/53e6aa927f6fe908a64a2855c9d0af1b
+          gist_title: 8-PWM-CCS-4550.c
+          gist_description: Prácticas PIC CCS
+          github_file: Proyecto/PIC18F4550/USB CDC.c
+          file_encoding: WINDOWS-1252
+    #PIC18F45K50
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: vhperaltaj/gist-sync-action@v1.0.0
+        id: PIC18F45K50
+        with:
+          auth: ${{ secrets.GIST_TOKEN }}
+          gist_url: https://gist.github.com/microside-mx/701c9402754af906baea43042be80c61
+          gist_title: 8-PWM-CCS.c
+          gist_description: Prácticas PIC CCS
+          github_file: Proyecto/PIC18F45K50/USB CDC.c
+          file_encoding: WINDOWS-1252
