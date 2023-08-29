@@ -11,7 +11,7 @@ para regular la luminosidad de un led
 **************************************************************************/
 
 #include <18F4550.h>                    //Para PIC18F4550 cambiar por: #include <18F4550.h>
-#use delay(clock=48MHz, crystal=20MHz)  //Tipo de oscilador y frecuencia dependiendo del microcontrolador 
+#use delay(internal=48MHz)              //Tipo de oscilador y frecuencia dependiendo del microcontrolador 
 #build(reset=0x02000,interrupt=0x02008)//Asigna los vectores de reset e interrupción para la versión con bootloader
 #org 0x0000,0x1FFF {}                 //Reserva espacio en memoria para el bootloader
 
