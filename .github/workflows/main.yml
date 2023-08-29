@@ -15,7 +15,7 @@ jobs:
           gist_url: https://gist.github.com/microside-mx/53e6aa927f6fe908a64a2855c9d0af1b
           gist_title: 8-PWM-CCS-4550.c
           gist_description: Prácticas PIC CCS
-          github_file: Proyecto/PIC18F4550/USB CDC.c
+          github_file: Proyecto/PIC18F4550/PWM1.c
           file_encoding: WINDOWS-1252
     #PIC18F45K50
       - name: Checkout
@@ -27,5 +27,5 @@ jobs:
           gist_url: https://gist.github.com/microside-mx/701c9402754af906baea43042be80c61
           gist_title: 8-PWM-CCS.c
           gist_description: Prácticas PIC CCS
-          github_file: Proyecto/PIC18F45K50/USB CDC.c
+          github_file: Proyecto/PIC18F45K50/PWM1.c
           file_encoding: WINDOWS-1252
