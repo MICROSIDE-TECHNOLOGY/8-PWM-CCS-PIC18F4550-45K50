@@ -1,19 +1,88 @@
 [PROJECT]
 Target=PWM1.hex
 Processor_Text=PIC18F45K50
-CCSVersion=5.015
+CCSVersion=5.115d
 Compiler=PCH
+Development_Mode=
+ToolSuite=CCS
+CCSVerions=5.115d
 [Target Data]
 FileList=PWM1.c
+BuildTool=C-COMPILER
+OptionString=+FH
+AdditionalOptionString=
+BuildRequired=1
 [Directories]
-Include=C:\Program Files (x86)\PICC\devices\;C:\Program Files (x86)\PICC\drivers\
+Include=
+Library=
+LinkerScript=
+output=
 [PWM1.c]
 Type=4
+Path=
+FileList=
+BuildTool=
+OptionString=
+AdditionalOptionString=
 [mru-list]
 1=PWM1.c
 [Opened Files]
 1=PWM1.c
 2=
+t1=1
+Count=1
+
+[fileformats]
+forcecoff=0
+debug=4
+error=2
+object=0
+list=0
+scratch=0
+sta=1
+tre=1
+expandtree=0
+allerrors=1
+allwarnings=1
+stayupne=3
+stayupoe=0
+
+[ProjectLog]
+Days=1
+D1=30-08-2023
+D1_L=13
+D1_L1=[53394]Project Opened.
+D1_L2=[53429]Started Editing.
+D1_L3=[53476]Stopped Editing.
+TotalEdit=5
+TotalDebug=0
+D1_E=5
+D1_D=0
+D1_L4=[53476]Project Closed.
+D1_L5=[53483]Project Opened.
+D1_L6=[53489]Started Editing.
+D1_L7=[53563]Project Closed.
+D1_L8=[53586]Project Opened.
+D1_L9=[53668]Project Closed.
+D1_L10=[53799]Project Opened.
+D1_L11=[53855]Started Editing.
+D1_L12=[54046]Stopped Editing.
+D1_L13=[54046]Project Closed.
+
+[defines]
+enabled=0
+chip=1
+D1=
+V1=
+buildcount=2
+
+[Windows]
+0=0000 %S 0 0 796 451 3 0
+
+[CompilerVersion]
+Fixed=
+[C:\Users\victo\OneDrive\Documentos\X-TRAINER-hands-on\CCS\PIC18F\8-PWM-CCS-PIC18F4550-45K50\Proyecto\PIC18F45K50\PWM1]
+Type=4
 [Units]
 Count=1
 1=PWM1 (main)

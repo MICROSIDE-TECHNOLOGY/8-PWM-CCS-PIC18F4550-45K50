@@ -33,12 +33,12 @@ Project Directory:
     C:\Users\victo\OneDrive\Documentos\X-TRAINER-hands-on\CCS\PIC18F\8-PWM-CCS-PIC18F4550-45K50\Proyecto\PIC18F4550\
 
 Project Files:
-    PWM1.c                                                  [29-ago.-23 11:54  CRC=ECBE4FBD]
+    PWM1.c                                                  [30-ago.-23 14:48  CRC=E2E2072C]
     ..\..\..\..\..\..\..\..\..\..\Program Files (x86)\PICCDEMO\Devices\18F4550.h [02-may.-23 08:34  CRC=3BACED27]
 
-Source signature=64182A0B
+Source signature=5A3BE17A
 Program memory checksum=0000
-Hex file CRC=9047
+Hex file CRC=4E4F
 
 Units:
     C:\Users\victo\OneDrive\Documentos\X-TRAINER-hands-on\CCS\PIC18F\8-PWM-CCS-PIC18F4550-45K50\Proyecto\PIC18F4550\PWM1 (main)

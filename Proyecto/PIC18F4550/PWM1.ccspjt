@@ -17,7 +17,7 @@ Type=4
 forcecoff=0
 
 [ProjectLog]
-Days=1
+Days=2
 D1=29-08-2023
 D1_L=6
 D1_L1=[42231]Project Opened.
@@ -25,11 +25,21 @@ D1_L2=[42273]Project Closed.
 D1_L3=[42297]Project Opened.
 D1_L4=[42501]Started Editing.
 D1_L5=[42900]Stopped Editing.
-TotalEdit=7
+TotalEdit=9
 TotalDebug=0
 D1_E=7
 D1_D=0
 D1_L6=[42900]Project Closed.
+D2=30-08-2023
+D2_L=6
+D2_L1=[53162]Project Opened.
+D2_L2=[53300]Started Editing.
+D2_L3=[53385]Stopped Editing.
+D2_E=2
+D2_D=0
+D2_L4=[53386]Project Closed.
+D2_L5=[53571]Project Opened.
+D2_L6=[53578]Project Closed.
 
 [Opened Files]
 1=PWM1.c
@@ -39,7 +49,7 @@ Count=1
 Type=4
 
 [defines]
-buildcount=3
+buildcount=5
 [Units]
 Count=1
 1=PWM1 (main)

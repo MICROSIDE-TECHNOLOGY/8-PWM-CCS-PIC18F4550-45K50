@@ -1,14 +1,14 @@
-CCS PCH C Compiler, Version 5.115d, 1               29-ago.-23 11:54
+CCS PCH C Compiler, Version 5.115d, 1               30-ago.-23 14:48
 Compiler operating in Evaluation Mode
 To obtain a fully enabled compiler visit www.ccsinfo.com/products
 
                Filename:   C:\Users\victo\OneDrive\Documentos\X-TRAINER-hands-on\CCS\PIC18F\8-PWM-CCS-PIC18F4550-45K50\Proyecto\PIC18F4550\PWM1.lst
 
-               ROM used:   222 bytes (1%)
-                           Largest free fragment is 24350
+               ROM used:   220 bytes (1%)
+                           Largest free fragment is 24352
                RAM used:   6 (0%) at main() level
                            7 (0%) worst case
-               Stack used: 0 locations
+               Stack used: 1 locations
                Stack size: 31
 
 *
@@ -16,16 +16,19 @@ To obtain a fully enabled compiler visit www.ccsinfo.com/products
 .................... /************************************************************************************************
 .................... Company:
 .................... Microside Technology Inc.
+.................... File Name:
+.................... PWM1.c
 .................... Product Revision  :  1
 .................... Device            :  X-TRAINER
 .................... Driver Version    :  1.0
 .................... ************************************************************************************************/
+.................... 
 .................... /**************************************************************************
-.................... Esta practica consiste en realizar un control PWM
+.................... Esta práctica consiste en realizar un control PWM
 .................... para regular la luminosidad de un led
 .................... **************************************************************************/
 .................... 
-.................... #include <18F4550.h>                    //Para PIC18F4550 cambiar por: #include <18F4550.h>
+.................... #include <18F4550.h>                           // Para PIC18F4550 cambiar por: #include <18F4550.h>
 .................... //////////// Standard Header file for the PIC18F4550 device ////////////////
 .................... ///////////////////////////////////////////////////////////////////////////
 .................... ////        (C) Copyright 1996, 2020 Custom Computer Services          ////
@@ -40,7 +43,7 @@ To obtain a fully enabled compiler visit www.ccsinfo.com/products
 .................... 
 .................... #list
 .................... 
-.................... #use delay(clock=48MHz, crystal=20MHz)  //Tipo de oscilador y frecuencia dependiendo del microcontrolador 
+.................... #use delay( clock=48MHz, crystal=20MHz )       // Tipo de oscilador y frecuencia dependiendo del microcontrolador 
 *
 2008:  CLRF   FEA
 200A:  MOVLW  06
@@ -62,12 +65,12 @@ To obtain a fully enabled compiler visit www.ccsinfo.com/products
 202A:  DECFSZ FEF,F
 202C:  BRA    2012
 202E:  RETURN 0
-.................... #build(reset=0x02000,interrupt=0x02008)//Asigna los vectores de reset e interrupciÃ³n para la versiÃ³n con bootloader
-.................... #org 0x0000,0x1FFF {}                 //Reserva espacio en memoria para el bootloader
+.................... #build( reset=0x02000, interrupt=0x02008 )     // Asigna los vectores de reset e interrupción para la versión con bootloader
+.................... #org 0x0000,0x1FFF {}                          // Reserva espacio en memoria para el bootloader
 .................... 
-.................... unsigned int16 Duty=0;         //Variable para guardar el valor para PWM
+.................... unsigned int16 Duty = 0;                       // Variable para guardar el valor para PWM
 .................... 
-.................... void main()
+.................... void main( void ) {
 2030:  CLRF   FF8
 2032:  BCF    FD0.7
 2034:  CLRF   05
@@ -78,14 +81,13 @@ To obtain a fully enabled compiler visit www.ccsinfo.com/products
 203E:  MOVWF  FC1
 2040:  MOVLW  07
 2042:  MOVWF  FB4
-.................... {
-....................    setup_timer_2 (T2_DIV_BY_16, 254, 1); //Configura Timer2, periodo ajustado a 342uS
+....................    setup_timer_2( T2_DIV_BY_16, 254, 1 );                     // Configura Timer2, periodo ajustado a 342uS
 2044:  MOVLW  00
 2046:  IORLW  06
 2048:  MOVWF  FCA
 204A:  MOVLW  FE
 204C:  MOVWF  FCB
-....................    setup_ccp1 (CCP_PWM|CCP_SHUTDOWN_AC_L|CCP_SHUTDOWN_BD_L); //Configura el mÃ³dulo CCP para uso del PWM
+....................    setup_ccp1( CCP_PWM|CCP_SHUTDOWN_AC_L|CCP_SHUTDOWN_BD_L ); // Configura el módulo CCP para uso del PWM
 204E:  BCF    F94.2
 2050:  BCF    F8B.2
 2052:  MOVLW  0C
@@ -93,85 +95,80 @@ To obtain a fully enabled compiler visit www.ccsinfo.com/products
 2056:  CLRF   FB7
 2058:  CLRF   FB6
 .................... 
-....................    while (TRUE)
-....................    {
+....................    while ( 1 ) {
 ....................       
-....................       for (Duty = 0; Duty < 255; Duty++)
+....................       for ( Duty = 0; Duty < 1024; Duty++ ) {
 205A:  CLRF   05
 205C:  CLRF   04
-205E:  MOVF   05,F
-2060:  BNZ   209C
-2062:  MOVF   04,W
-2064:  SUBLW  FE
-2066:  BNC   209C
-....................       {
-....................          set_pwm1_duty (Duty); //Asigna el valor del Duty al PWM
-2068:  MOVFF  05,02
-206C:  MOVFF  04,01
+205E:  MOVF   05,W
+2060:  SUBLW  03
+2062:  BNC   2098
+....................          set_pwm1_duty( Duty );                // Asigna el valor del Duty al PWM
+2064:  MOVFF  05,02
+2068:  MOVFF  04,01
+206C:  RRCF   02,F
+206E:  RRCF   01,F
 2070:  RRCF   02,F
 2072:  RRCF   01,F
 2074:  RRCF   02,F
-2076:  RRCF   01,F
-2078:  RRCF   02,F
-207A:  MOVFF  01,FBE
-207E:  RRCF   02,F
-2080:  RRCF   02,W
-2082:  ANDLW  30
-2084:  MOVWF  00
-2086:  MOVF   FBD,W
-2088:  ANDLW  CF
-208A:  IORWF  00,W
-208C:  MOVWF  FBD
-....................          delay_ms (5); //Retardo de 5ms
-208E:  MOVLW  05
-2090:  MOVWF  06
-2092:  RCALL  2008
-2094:  INCF   04,F
-2096:  BTFSC  FD8.2
-2098:  INCF   05,F
-209A:  BRA    205E
+2076:  MOVFF  01,FBE
+207A:  RRCF   02,F
+207C:  RRCF   02,W
+207E:  ANDLW  30
+2080:  MOVWF  00
+2082:  MOVF   FBD,W
+2084:  ANDLW  CF
+2086:  IORWF  00,W
+2088:  MOVWF  FBD
+....................          delay_ms( 5 );                        // Retardo de 5ms
+208A:  MOVLW  05
+208C:  MOVWF  06
+208E:  RCALL  2008
+2090:  INCF   04,F
+2092:  BTFSC  FD8.2
+2094:  INCF   05,F
+2096:  BRA    205E
 ....................       }
 .................... 
-....................       
-....................       for (Duty = 255; Duty > 0; Duty--) // Ciclo para disminuir el valor de la variable
-209C:  CLRF   05
-209E:  SETF   04
-20A0:  MOVF   04,F
-20A2:  BNZ   20A8
-20A4:  MOVF   05,F
-20A6:  BZ    20DE
-....................       {
-....................          set_pwm1_duty (Duty); //Asigna el valor del Duty al PWM
-20A8:  MOVFF  05,02
-20AC:  MOVFF  04,01
-20B0:  RRCF   02,F
-20B2:  RRCF   01,F
-20B4:  RRCF   02,F
-20B6:  RRCF   01,F
-20B8:  RRCF   02,F
-20BA:  MOVFF  01,FBE
-20BE:  RRCF   02,F
-20C0:  RRCF   02,W
-20C2:  ANDLW  30
-20C4:  MOVWF  00
-20C6:  MOVF   FBD,W
-20C8:  ANDLW  CF
-20CA:  IORWF  00,W
-20CC:  MOVWF  FBD
-....................          delay_ms (5); // Retardo de 5ms
-20CE:  MOVLW  05
-20D0:  MOVWF  06
-20D2:  RCALL  2008
-20D4:  MOVF   04,W
-20D6:  BTFSC  FD8.2
-20D8:  DECF   05,F
-20DA:  DECF   04,F
-20DC:  BRA    20A0
+....................       for ( Duty = 1024; Duty > 0; Duty-- ) {   // Ciclo para disminuir el valor de la variable
+2098:  MOVLW  04
+209A:  MOVWF  05
+209C:  CLRF   04
+209E:  MOVF   04,F
+20A0:  BNZ   20A6
+20A2:  MOVF   05,F
+20A4:  BZ    20DC
+....................          set_pwm1_duty( Duty );                // Asigna el valor del Duty al PWM
+20A6:  MOVFF  05,02
+20AA:  MOVFF  04,01
+20AE:  RRCF   02,F
+20B0:  RRCF   01,F
+20B2:  RRCF   02,F
+20B4:  RRCF   01,F
+20B6:  RRCF   02,F
+20B8:  MOVFF  01,FBE
+20BC:  RRCF   02,F
+20BE:  RRCF   02,W
+20C0:  ANDLW  30
+20C2:  MOVWF  00
+20C4:  MOVF   FBD,W
+20C6:  ANDLW  CF
+20C8:  IORWF  00,W
+20CA:  MOVWF  FBD
+....................          delay_ms( 5 );                        // Retardo de 5ms
+20CC:  MOVLW  05
+20CE:  MOVWF  06
+20D0:  RCALL  2008
+20D2:  MOVF   04,W
+20D4:  BTFSC  FD8.2
+20D6:  DECF   05,F
+20D8:  DECF   04,F
+20DA:  BRA    209E
 ....................       }
-20DE:  BRA    205A
+20DC:  BRA    205A
 ....................    }
 .................... }
-20E0:  SLEEP 
+20DE:  SLEEP 
 
 Configuration Fuses:
    Word  1: CE24   PLL5 CPUDIV1 USBDIV HSPLL FCMEN IESO
